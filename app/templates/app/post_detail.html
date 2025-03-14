@@ -1,0 +1,22 @@
+{% extends 'app/base.html' %}
+
+{% block main-content %}
+<div class="container mt-4">
+    <h2>{{ post.title }}</h2>
+    <p class="text-muted">✍ Đăng bởi: <strong>{{ post.author.username }}</strong> | 🕒 {{ post.created_at|timezone:"Asia/Ho_Chi_Minh"|date:"d/m/Y H:i" }}</p>
+    
+    <!-- Hiển thị hình ảnh bài viết -->
+    {% if post.image_url %}
+        <img src="{{ post.image_url }}" class="img-fluid" alt="Hình ảnh bài viết">
+    {% else %}
+        <img src="https://picsum.photos/500/300?random={{ post.id }}" class="img-fluid" alt="Hình ảnh random">
+    {% endif %}
+
+    <div class="mt-4">
+        <p>{{ post.content }}</p>
+    </div>
+    
+    <!-- Thêm nút quay lại danh sách bài viết -->
+    <a href="{% url 'post_list' %}" class="btn btn-secondary">Quay lại danh sách bài viết</a>
+</div>
+{% endblock %}

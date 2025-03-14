@@ -1,0 +1,10 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <h2>Bạn có chắc chắn muốn xóa bài viết "{{ post.title }}" không?</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Xóa</button>
+        <a href="{% url 'post_list' %}">Hủy</a>
+    </form>
+{% endblock %}

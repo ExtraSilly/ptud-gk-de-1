@@ -1,0 +1,58 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block banner_slider %}
+<!-- Nội dung của banner -->
+{% endblock banner_slider %}
+
+{% block extra-js %}
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var carousel = new bootstrap.Carousel(document.querySelector('.carousel'), {
+      interval: 2000 // Interval in milliseconds
+    });
+  });
+</script>  
+{% endblock extra-js %}
+
+{% block main-content %} 
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {% for product in products %}
+            <div class="post-container mb-4 p-3 border rounded shadow-sm">  <!-- Thêm margin-bottom và shadow -->
+                <!-- Thông tin người đăng -->
+                <div class="user-info d-flex align-items-center">
+                    <img src="https://via.placeholder.com/50" class="rounded-circle me-2" alt="User Avatar">
+                    <div>
+                        <div class="user-name"><strong>{{ product.name }}</strong></div>
+                        <div class="post-time text-muted small">1 giờ trước • 🌍 Công khai</div>
+                    </div>
+                </div>
+
+                <!-- Nội dung bài viết -->
+                <div class="post-content mt-2">
+                    Hôm nay thật đẹp trời! 🌞 Thời tiết lý tưởng để ra ngoài dạo phố. Mọi người có kế hoạch gì không?
+                </div>
+
+                <!-- Hình ảnh hoặc video -->
+                {% if product.image %}
+                <div class="post-media mt-2">
+                    <img src="{{ product.ImageURL}}" class="img-fluid rounded" alt="Post Image">
+                </div>
+                {% endif %}
+
+                <!-- Tương tác -->
+                <div class="post-actions mt-3 d-flex justify-content-around">
+                    <button class="btn btn-outline-primary btn-sm">👍 Thích</button>
+                    <button class="btn btn-outline-secondary btn-sm">💬 Bình luận</button>
+                    <button class="btn btn-outline-success btn-sm">🔄 Chia sẻ</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock main-content %}
