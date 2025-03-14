@@ -19,3 +19,7 @@
 + python manage.py createsuperuser
 - chạy 
 + python manage.py runserver
+- các tác vụ có sẵn
++ vào trang /login /register
++ vào trang /posts để đăng tải bài viết
++ vào trang /dashboard để xem thôgn tin
